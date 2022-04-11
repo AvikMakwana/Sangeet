@@ -3,8 +3,11 @@ package com.example.sangeet;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = findViewById(R.id.listView);
+
 //        Permission to READ External Storage
         Dexter.withContext(this)
                 .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -43,6 +47,18 @@ public class MainActivity extends AppCompatActivity {
                         }
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,items);
                         listView.setAdapter(adapter);
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                Intent intent = new Intent(MainActivity.this, PlaySong.class);
+
+                                String currentSong = listView.getItemAtPosition(position).toString();
+                                intent.putExtra("SongList", mySongs);
+                                intent.putExtra("CurrentSong", currentSong);
+                                intent.putExtra("Position", position);
+                                startActivity(intent);
+                            }
+                        });
 
 
                     }
