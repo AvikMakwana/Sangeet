@@ -22,9 +22,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="56dp"
         android:shadowColor="#FFFFFF"
         android:textColor="#000000"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:ellipsize="marquee"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:fadingEdge="horizontal"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,15 +39,15 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="150dp"
+        android:layout_width="338dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="100dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/seekBar">
 
         <ImageView
             android:id="@+id/previous"
@@ -56,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@drawable/play" />
+            app:srcCompat="@drawable/pause" />
 
         <ImageView
             android:id="@+id/next"
@@ -65,5 +70,23 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/next" />
     </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="349dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
