@@ -45,5 +45,22 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .check();
     }
+//    Checking FUntion that given file have songs or not
+    public ArrayList<File> fetchSongs(File file){
+        ArrayList arrayList = new ArrayList();
+        File[] songs = file.listFiles();
+        if(songs != null){
+            for(File myFile: songs){
+                if(!myFile.isHidden() && myFile.isDirectory()){
+                    arrayList.addAll(fetchSongs(myFile));
+                }else {
+                    if(myFile.getName().endsWith(".mp3") && !myFile.getName().startsWith(".")){
+                        arrayList.add(myFile);
+                    }
+                }
+            }
+        }
+        return arrayList;
+    }
 
 }
