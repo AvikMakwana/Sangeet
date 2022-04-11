@@ -37,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 .withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-
-                        Toast.makeText(MainActivity.this, "Permisssion Given", Toast.LENGTH_SHORT).show();
-//                        Show all songs that file have using Array Adapter
+                        //                        Show all songs that file have using Array Adapter
                         ArrayList<File> mySongs = fetchSongs(Environment.getExternalStorageDirectory());
                         String[] items = new String[mySongs.size()];
                         for (int i=0; i<mySongs.size();i++){
@@ -53,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent = new Intent(MainActivity.this, PlaySong.class);
 
                                 String currentSong = listView.getItemAtPosition(position).toString();
-                                intent.putExtra("SongList", mySongs);
-                                intent.putExtra("CurrentSong", currentSong);
-                                intent.putExtra("Position", position);
+                                intent.putExtra("songList", mySongs);
+                                intent.putExtra("currentSong", currentSong);
+                                intent.putExtra("position", position);
                                 startActivity(intent);
                             }
                         });
