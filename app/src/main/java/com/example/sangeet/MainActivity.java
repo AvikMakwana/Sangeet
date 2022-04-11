@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.os.Bundle;
+import android.os.Environment;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
@@ -17,18 +20,30 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        listView = findViewById(R.id.listView);
 //        Permission to READ External Storage
         Dexter.withContext(this)
                 .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 .withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+
                         Toast.makeText(MainActivity.this, "Permisssion Given", Toast.LENGTH_SHORT).show();
+//                        Show all songs that file have using Array Adapter
+                        ArrayList<File> mySongs = fetchSongs(Environment.getExternalStorageDirectory());
+                        String[] items = new String[mySongs.size()];
+                        for (int i=0; i<mySongs.size();i++){
+                            items[i] = mySongs.get(i).getName().replace(".mp3", "");
+                        }
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1,items);
+                        listView.setAdapter(adapter);
+
 
                     }
 
