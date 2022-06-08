@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .check();
     }
-//    Checking FUntion that given file have songs or not
+//    Checking Function that given file have songs or not
     public ArrayList<File> fetchSongs(File file){
         ArrayList arrayList = new ArrayList();
         File[] songs = file.listFiles();

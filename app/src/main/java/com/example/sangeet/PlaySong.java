@@ -113,7 +113,7 @@ public class PlaySong extends AppCompatActivity {
 
             }
         });
-//        For Pause Button
+//        For Previous Button
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,7 +137,7 @@ public class PlaySong extends AppCompatActivity {
             }
         });
 
-        //        For Pause Button
+        //        For Next Button
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
