@@ -1,5 +1,7 @@
 # Sangeet - A simple Music Player App
 
+The music player app allow the users to play the songs present on the device. You can download songs on your device and then use the music player to play those songs. 
+
 <h3 align="left">Screenshot</h3>
 
 ![Sangeet](https://user-images.githubusercontent.com/62895845/172290366-4280b65e-4b8f-42ae-8b6a-5cd30aeebc5c.png)
